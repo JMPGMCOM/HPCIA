@@ -11,4 +11,10 @@ def monitor_resources():
     # Retourne les mesures sous forme de dictionnaire, avec un timestamp (date/heure en secondes depuis l'époque Unix)
     return {
         'cpu': cpu,
-        'memory': memory
+        'memory': memory,
+        'disk': disk,
+        'timestamp': time.time()
+    }
+
+# Appelle la fonction et affiche le résultat
+print(monitor_resources())
