@@ -1,0 +1,13 @@
+#!/bin/bash
+# Monitorer un processus et redémarrer si planté
+
+PROCESS_NAME="nginx" # ou autre processus 
+LOG_FILE="/var/log/process_monitor.log" # autre chemin
+
+while true; do
+    if ! pgrep -x "$PROCESS_NAME" > /dev/null; then
+        echo "$(date) - $PROCESS_NAME down, relance..." >> $LOG_FILE
+        systemctl start $PROCESS_NAME
+    fi
+    sleep 30
+done
